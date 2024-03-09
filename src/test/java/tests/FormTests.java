@@ -8,14 +8,16 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.by;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FormTests {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.browserSize = "375x667";
+        Configuration.browserSize = "430x932";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.savePageSource = false;
         Configuration.pageLoadStrategy="eager";
@@ -34,7 +36,7 @@ public class FormTests {
 
         $(by("for", "gender-radio-1")).scrollTo().click();
 
-        $("#userNumber").scrollTo().setValue("89999999999");
+        $("#userNumber").scrollTo().setValue("9993334455");
 
         // region calendar
         $("#dateOfBirthInput").scrollTo().click();
@@ -43,23 +45,34 @@ public class FormTests {
         $(by("aria-label", "Choose Wednesday, January 21st, 1998")).scrollTo().click();
         // endregion
 
-        $("#subjectsInput").scrollTo().setValue("12345");
+        $("#subjectsInput").scrollTo().setValue("Maths").pressEnter();
 
         $(by("for", "hobbies-checkbox-2")).scrollTo().click();
 
-        var file = new File("/Users/ingver/Тестирование/qa quru/test.txt");
+        var file = new File("/Users/ingver/Desktop/test.jpg");
         $("#uploadPicture").scrollTo().uploadFile(file);
-
-
+        
         $("#currentAddress").scrollTo().setValue("Moscow, Lenina street, 2/1");
 
-        $("#react-select-3-input").scrollTo().setValue("Rajasthan");
-        $("#react-select-3-input").pressEnter();
+        $("#state").click();
+        $(byText("Rajasthan")).click();
 
-        $("#react-select-4-input").scrollTo().setValue("Agra");
-        $("#react-select-4-input").pressEnter();
+        $("#city").click();
+        $(byText("Jaipur")).click();
 
         $("#submit").scrollTo().pressEnter();
+
+
+        $$("tr").get(1).shouldHave(text("Vasya Vasechkin"));
+        $$("tr").get(2).shouldHave(text("vasya@qaquru.com"));
+        $$("tr").get(3).shouldHave(text("Male"));
+        $$("tr").get(4).shouldHave(text("9993334455"));
+        $$("tr").get(5).shouldHave(text("21 January,1998"));
+        $$("tr").get(6).shouldHave(text("Maths"));
+        $$("tr").get(7).shouldHave(text("Reading"));
+        $$("tr").get(8).shouldHave(text("test.jpg"));
+        $$("tr").get(9).shouldHave(text("Moscow, Lenina street, 2/1"));
+        $$("tr").get(10).shouldHave(text("Rajasthan Jaipur"));
     }
 
     @AfterAll
