@@ -5,9 +5,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.Selectors.byText;
@@ -25,7 +22,7 @@ public class FormTests {
 
 
     @Test
-    void fillFormTests() throws FileNotFoundException {
+    void fillFormTests() {
         open("/automation-practice-form");
 
         $("#firstName").scrollTo().setValue("Vasya");
@@ -49,9 +46,8 @@ public class FormTests {
 
         $(by("for", "hobbies-checkbox-2")).scrollTo().click();
 
-        var file = new File("/Users/ingver/Desktop/test.jpg");
-        $("#uploadPicture").scrollTo().uploadFile(file);
-        
+        $("#uploadPicture").uploadFromClasspath("test.jpg");
+
         $("#currentAddress").scrollTo().setValue("Moscow, Lenina street, 2/1");
 
         $("#state").click();
