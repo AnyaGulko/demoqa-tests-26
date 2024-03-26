@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.ResultFormComponent;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byAttribute;
@@ -28,6 +29,7 @@ public class RegistrationPage {
             buttonSubmit = $("#submit");
 
     CalendarComponent calendarComponent = new CalendarComponent();
+    ResultFormComponent resultFormComponent = new ResultFormComponent();
 
 
     public RegistrationPage openPage() {
@@ -104,10 +106,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkResult(String key, String value) {
-        $(".table-responsive")
-                .$(byText(key))
-                .parent()
-                .shouldHave(text(value));
+        resultFormComponent.checkFormComponent(key,value);
         return this;
     }
 
