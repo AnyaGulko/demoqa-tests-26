@@ -28,9 +28,8 @@ public class RegistrationPage {
             city = $("#city"),
             buttonSubmit = $("#submit");
 
-    CalendarComponent calendarComponent = new CalendarComponent();
-    ResultFormComponent resultFormComponent = new ResultFormComponent();
-
+    private final CalendarComponent calendarComponent = new CalendarComponent();
+    private final ResultFormComponent resultFormComponent = new ResultFormComponent();
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -64,7 +63,7 @@ public class RegistrationPage {
 
     public RegistrationPage setDateBirth(String day, String month, String year) {
         calendarInput.scrollTo().click();
-        new CalendarComponent().setDate(day, month, year);
+        calendarComponent.setDate(day, month, year);
         return this;
     }
 
