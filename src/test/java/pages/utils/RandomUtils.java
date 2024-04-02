@@ -9,7 +9,7 @@ public class RandomUtils {
     private static final SimpleDateFormat DAY_FORMATTER = new SimpleDateFormat("dd", Locale.ENGLISH);
     private static final SimpleDateFormat MONTH_FORMATTER = new SimpleDateFormat("MMMM", Locale.ENGLISH);
     private static final SimpleDateFormat YEAR_FORMATTER = new SimpleDateFormat("yyyy", Locale.ENGLISH);
-    private static final List<String> subjects = Arrays.asList(
+    private static final List<String> SUBJECTS = Arrays.asList(
             "Hindi",
             "English",
             "Maths",
@@ -25,8 +25,8 @@ public class RandomUtils {
             "History",
             "Civics"
     );
-    private static final List<String> states = Arrays.asList("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
-    private static final Map<String, List<String>> statesWithCities = new HashMap<>(states.size()) {
+    private static final List<String> STATES = Arrays.asList("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
+    private static final Map<String, List<String>> STATES_WITH_CITIES = new HashMap<>(STATES.size()) {
         {
             put("NCR", Arrays.asList("Delhi", "Gurgaon", "Noida"));
             put("Uttar Pradesh", Arrays.asList("Agra", "Lucknow", "Merrut"));
@@ -36,15 +36,7 @@ public class RandomUtils {
     };
     static Faker faker = new Faker(Locale.ENGLISH);
 
-
-
-    public static void main(String[] args) {
-        Date birthday = faker.date().birthday();
-        System.out.println(dayOfBirthday(birthday));
-        System.out.println(monthOfBirthday(birthday));
-        System.out.println(yearOfBirthday(birthday));
-    }
-
+    
     public static String getRandomFirstName() {
         return faker.name().firstName();
     }
@@ -83,7 +75,7 @@ public class RandomUtils {
     }
 
     public static String getSubjects(String... used) {
-        List<String> subjectsCopy = new ArrayList<>(subjects);
+        List<String> subjectsCopy = new ArrayList<>(SUBJECTS);
         subjectsCopy.removeAll(Arrays.asList(used));
         return faker.options().nextElement(subjectsCopy);
     }
@@ -101,11 +93,11 @@ public class RandomUtils {
     }
 
     public static String getState() {
-        return faker.options().nextElement(states);
+        return faker.options().nextElement(STATES);
     }
 
     public static String getCity(String state) {
-        List<String> cities = statesWithCities.get(state);
+        List<String> cities = STATES_WITH_CITIES.get(state);
         return faker.options().nextElement(cities);
     }
 
