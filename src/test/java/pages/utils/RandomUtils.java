@@ -6,9 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class RandomUtils {
-    private static final SimpleDateFormat dayFormatter = new SimpleDateFormat("dd", Locale.ENGLISH);
-    private static final SimpleDateFormat monthFormatter = new SimpleDateFormat("MMMM", Locale.ENGLISH);
-    private static final SimpleDateFormat yearFormatter = new SimpleDateFormat("yyyy", Locale.ENGLISH);
+    private static final SimpleDateFormat DAY_FORMATTER = new SimpleDateFormat("dd", Locale.ENGLISH);
+    private static final SimpleDateFormat MONTH_FORMATTER = new SimpleDateFormat("MMMM", Locale.ENGLISH);
+    private static final SimpleDateFormat YEAR_FORMATTER = new SimpleDateFormat("yyyy", Locale.ENGLISH);
     private static final List<String> subjects = Arrays.asList(
             "Hindi",
             "English",
@@ -71,15 +71,15 @@ public class RandomUtils {
     }
 
     public static String dayOfBirthday(Date date) {
-        return dayFormatter.format(date);
+        return DAY_FORMATTER.format(date);
     }
 
     public static String monthOfBirthday(Date date) {
-        return monthFormatter.format(date);
+        return MONTH_FORMATTER.format(date);
     }
 
     public static String yearOfBirthday(Date date) {
-        return yearFormatter.format(date);
+        return YEAR_FORMATTER.format(date);
     }
 
     public static String getSubjects(String... used) {
