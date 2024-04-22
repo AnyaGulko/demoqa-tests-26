@@ -36,7 +36,7 @@ public class RandomUtils {
     };
     static Faker faker = new Faker(Locale.ENGLISH);
 
-    
+
     public static String getRandomFirstName() {
         return faker.name().firstName();
     }

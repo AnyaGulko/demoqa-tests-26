@@ -1,7 +1,10 @@
 package tests;
 
+import Steps.RegistrationSteps;
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
 
 import java.util.Date;
 
@@ -9,7 +12,7 @@ import static pages.utils.RandomUtils.*;
 
 
 public class StudentRegistrationFormTests extends TestBase {
-    RegistrationPage registrationPage = new RegistrationPage();
+    RegistrationSteps registrationSteps = new RegistrationSteps();
     String name = getRandomFirstName();
     String lastName = getRandomLastName();
     String email = getRandomEmail();
@@ -28,10 +31,15 @@ public class StudentRegistrationFormTests extends TestBase {
     String picture = getPicture();
     String address = getAddress();
 
-
     @Test
+    @Feature("Регистрация")
+    @Story("Регистрация студента")
+    @Owner("Anna Gulko")
+    @Severity(SeverityLevel.BLOCKER)
+    @Tag("positive")
+    @DisplayName("Успешная регистрация пользователя")
     void fullSuccessfulRegistrationTest() {
-        registrationPage.openPage()
+        registrationSteps.openPage()
                 .setFirstName(name)
                 .setLastName(lastName)
                 .setEmail(email)
@@ -48,7 +56,7 @@ public class StudentRegistrationFormTests extends TestBase {
                 .setCity(city)
                 .pressButtonSubmit();
 
-        registrationPage.checkResult("Student Name", name + " " + lastName)
+        registrationSteps.checkResult("Student Name", name + " " + lastName)
                 .checkResult("Student Email", email)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", phoneNumber)
@@ -64,25 +72,37 @@ public class StudentRegistrationFormTests extends TestBase {
     }
 
     @Test
+    @Feature("Регистрация")
+    @Story("Регистрация студента")
+    @Owner("Anna Gulko")
+    @Severity(SeverityLevel.BLOCKER)
+    @Tag("positive")
+    @DisplayName("Успешная регистрация только с обязательными полями")
     void minimumSuccessfulRegistrationTest() {
-        registrationPage.openPage()
+        registrationSteps.openPage()
                 .setFirstName(name)
                 .setLastName(lastName)
                 .setGender(gender)
                 .setUserNumber(phoneNumber)
                 .pressButtonSubmit();
 
-        registrationPage.checkResult("Student Name", name + " " + lastName)
+        registrationSteps.checkResult("Student Name", name + " " + lastName)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", phoneNumber);
     }
 
     @Test
+    @Feature("Регистрация")
+    @Story("Регистрация студента")
+    @Owner("Anna Gulko")
+    @Severity(SeverityLevel.BLOCKER)
+    @Tag("negative")
+    @DisplayName("Обработка ошибки при регистрации с пустыми полями")
     void failedRegistrationTest() {
-        registrationPage.openPage()
+        registrationSteps.openPage()
                 .pressButtonSubmit();
 
-        registrationPage.errorFirstName()
+        registrationSteps.errorFirstName()
                 .errorLastName()
                 .errorGender()
                 .errorUserNumber();

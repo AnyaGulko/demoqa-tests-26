@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 repositories {
@@ -7,10 +8,14 @@ repositories {
 }
 
 dependencies {
-    testImplementation ("com.codeborne:selenide:6.19.1")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
-    testImplementation("ch.qos.logback:logback-classic:1.4.12")
-    testImplementation("com.github.javafaker:javafaker:1.0.2")
+    testImplementation(
+            "com.codeborne:selenide:6.19.1",
+            "org.junit.jupiter:junit-jupiter:5.9.3",
+            "ch.qos.logback:logback-classic:1.4.12",
+            "com.github.javafaker:javafaker:1.0.2",
+            "io.qameta.allure:allure-selenide:2.25.0"
+    )
+    runtimeOnly "org.aspectj:aspectjweaver:1.9.22"
 }
 
 tasks.withType(JavaCompile) {
@@ -19,4 +24,5 @@ tasks.withType(JavaCompile) {
 
 test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 }

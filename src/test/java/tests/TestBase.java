@@ -1,12 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.AfterAll;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.closeWindow;
 
 public class TestBase {
     @BeforeAll
@@ -17,13 +14,8 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
     }
 
-    @AfterAll
-    static void disposeResources() {
-        closeWebDriver();
-    }
-
     @AfterEach
     void disposeWindow() {
-        closeWindow();
+        Selenide.closeWebDriver();
     }
 }
