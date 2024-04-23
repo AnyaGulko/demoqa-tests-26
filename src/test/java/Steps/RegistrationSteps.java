@@ -103,28 +103,28 @@ public class RegistrationSteps {
         return this;
     }
 
-    @Step("Проверка соответствия введенных значений в карточке")
+    @Step("Проверить что введенное значение {value} отображается в поле {key}")
     public RegistrationSteps checkResult(String key, String value) {
         resultFormComponent.checkFormComponent(key, value);
         return this;
     }
 
-    @Step("Обработка ошибки в поле 'Имя'")
+    @Step("Проверить что поле 'Имя' подсвечивается красным и отображается иконка")
     public RegistrationSteps errorFirstName() {
         return errorInputField(registrationPage.getFirstNameInput());
     }
 
-    @Step("Обработка ошибки в поле 'Фамилия'")
+    @Step("Проверить что поле 'Фамилия' подсвечивается красным и отображается иконка")
     public RegistrationSteps errorLastName() {
         return errorInputField(registrationPage.getLastNameInput());
     }
 
-    @Step("Обработка ошибки в поле 'Номер телефона'")
+    @Step("Проверить что поле 'Номер телефона' подсвечивается красным и отображается иконка")
     public RegistrationSteps errorUserNumber() {
         return errorInputField(registrationPage.getUserNumber());
     }
 
-    @Step("Обработка ошибки в радио кнопке 'Гендер'")
+    @Step("Проверить что радио батон подсвечивается красным")
     public RegistrationSteps errorGender() {
         return errorRadioButton(registrationPage.getGenderRadio1())
                 .errorRadioButton(registrationPage.getGenderRadio2())

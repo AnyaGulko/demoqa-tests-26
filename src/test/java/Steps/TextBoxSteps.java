@@ -48,7 +48,7 @@ public class TextBoxSteps {
         return this;
     }
 
-    @Step("Проверка соответствия введенных значений")
+    @Step("Проверить что введенное значение {value} отображается в поле {key}")
     public TextBoxSteps checkResult(String key, String value) {
         textBoxPage.getOutputForm().should(visible);
         textBoxPage.getOutputForm().$(byText(key)).parent().shouldHave(text(value));
