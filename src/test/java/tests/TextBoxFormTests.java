@@ -15,9 +15,10 @@ public class TextBoxFormTests extends TestBase {
     @Owner("Anna Gulko")
     @Severity(SeverityLevel.BLOCKER)
     @Tag("positive")
-    @DisplayName("Успешное заполнение формыTextBox")
+    @DisplayName("Успешное заполнение формы TextBox")
     void fullSuccessfulTextBoxTest() {
         textBoxSteps.openPage()
+                .removeBanner()
                 .setUserName("Pupsen Vupsen")
                 .setEmail("gusenitsa@gmail.com")
                 .setCurrentAddress("Moscow, Lenina street, 2/1")

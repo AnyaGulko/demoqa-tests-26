@@ -6,6 +6,7 @@ import pages.TextBoxPage;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TextBoxSteps {
@@ -51,6 +52,12 @@ public class TextBoxSteps {
     public TextBoxSteps checkResult(String key, String value) {
         textBoxPage.getOutputForm().should(visible);
         textBoxPage.getOutputForm().$(byText(key)).parent().shouldHave(text(value));
+        return this;
+    }
+
+    public TextBoxSteps removeBanner() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         return this;
     }
 }

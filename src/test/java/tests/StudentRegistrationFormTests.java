@@ -40,6 +40,7 @@ public class StudentRegistrationFormTests extends TestBase {
     @DisplayName("Успешная регистрация пользователя")
     void fullSuccessfulRegistrationTest() {
         registrationSteps.openPage()
+                .removeBanner()
                 .setFirstName(name)
                 .setLastName(lastName)
                 .setEmail(email)
@@ -80,6 +81,7 @@ public class StudentRegistrationFormTests extends TestBase {
     @DisplayName("Успешная регистрация только с обязательными полями")
     void minimumSuccessfulRegistrationTest() {
         registrationSteps.openPage()
+                .removeBanner()
                 .setFirstName(name)
                 .setLastName(lastName)
                 .setGender(gender)
@@ -100,6 +102,7 @@ public class StudentRegistrationFormTests extends TestBase {
     @DisplayName("Обработка ошибки при регистрации с пустыми полями")
     void failedRegistrationTest() {
         registrationSteps.openPage()
+                .removeBanner()
                 .pressButtonSubmit();
 
         registrationSteps.errorFirstName()

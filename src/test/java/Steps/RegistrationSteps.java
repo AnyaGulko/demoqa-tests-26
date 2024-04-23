@@ -9,8 +9,7 @@ import pages.components.ResultFormComponent;
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.empty;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationSteps {
     private final CalendarComponent calendarComponent = new CalendarComponent();
@@ -106,7 +105,7 @@ public class RegistrationSteps {
 
     @Step("Проверка соответствия введенных значений в карточке")
     public RegistrationSteps checkResult(String key, String value) {
-        resultFormComponent.checkFormComponent(key,value);
+        resultFormComponent.checkFormComponent(key, value);
         return this;
     }
 
@@ -142,6 +141,12 @@ public class RegistrationSteps {
 
     private RegistrationSteps errorRadioButton(SelenideElement locator) {
         $(locator).shouldHave(cssValue("color", "rgba(220, 53, 69, 1)"));
+        return this;
+    }
+
+    public RegistrationSteps removeBanner() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         return this;
     }
 }
