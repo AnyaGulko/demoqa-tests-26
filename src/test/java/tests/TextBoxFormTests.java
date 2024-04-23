@@ -1,12 +1,21 @@
 package tests;
 
 import Steps.TextBoxSteps;
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class TextBoxFormTests extends TestBase {
     TextBoxSteps textBoxSteps = new TextBoxSteps();
 
     @Test
+    @Feature("Заполнение формы TextBox")
+    @Story("Заполнение формы TextBox")
+    @Owner("Anna Gulko")
+    @Severity(SeverityLevel.BLOCKER)
+    @Tag("positive")
+    @DisplayName("Успешное заполнение формыTextBox")
     void fullSuccessfulTextBoxTest() {
         textBoxSteps.openPage()
                 .setUserName("Pupsen Vupsen")
