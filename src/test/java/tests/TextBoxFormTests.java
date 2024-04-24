@@ -1,6 +1,6 @@
 package tests;
 
-import Steps.TextBoxSteps;
+import steps.TextBoxSteps;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;

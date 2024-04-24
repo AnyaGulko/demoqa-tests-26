@@ -1,4 +1,4 @@
-package Steps;
+package steps;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
