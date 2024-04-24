@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+@Tag("Text_box_form_tests")
 public class TextBoxFormTests extends TestBase {
     TextBoxSteps textBoxSteps = new TextBoxSteps();
 

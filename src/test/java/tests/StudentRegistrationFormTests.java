@@ -10,7 +10,7 @@ import java.util.Date;
 
 import static pages.utils.RandomUtils.*;
 
-
+@Tag("registration_form_tests")
 public class StudentRegistrationFormTests extends TestBase {
     RegistrationSteps registrationSteps = new RegistrationSteps();
     String name = getRandomFirstName();
